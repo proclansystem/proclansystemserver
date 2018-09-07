@@ -86,7 +86,7 @@ hero.on('guildMemberAdd',async member => {
           ctx.clip();
           ctx.drawImage(ava, 36, 21, 260, 260);
            
-          const c = hero.channels.get(" اي دي الروم ");
+          const c = hero.channels.get("480734524796305428");
           c.sendFile(canvas.toBuffer());
  
 });
