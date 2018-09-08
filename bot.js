@@ -87,4 +87,11 @@ client.on('guildMemberAdd',async member => {
 });
 });
 });
+
+client.on('guildMemberAdd' ,member => {
+  if(member.guild.id !== '462347265747451914') return;
+  setTimeout(function(){
+  member.guild.channels.find(r => r.id === '480375166615027722').send('Welcome To **B?ubbles** Tumblr .');
+},3000);
+});
 client.login(process.env.BOT_TOKEN);
