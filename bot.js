@@ -64,26 +64,31 @@ client.on('guildMemberAdd',async member => {
 });
 });
 
-                                                     var guild;
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.get("480734524796305428");
+    if (!channel) {
+        console.log("!the channel id it's not correct");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('-');
+    var guild;
     while (!guild)
-                        guild = member.guild
+        guild = client.guilds.get("480375166615027722");
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
             if (dat[Inv])
                 if (dat[Inv] < Invite.uses) {
-                    console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
-                        member.guild.fetchInvites().then(invs => {
-      let user = Invite.inviter;
-      let invites = invs.filter(i => i.inviter.id === user.id);
-      let inviteCount = invites.reduce((p, v) => v.uses + p, 0);
-
- channel.send(`**Invited By** : **${Invite.inviter} (${inviteCount})**`);
-
-})
-}
+                    setTimeout(function() {
+ channel.send(`**invited by** ${Invite.inviter} `) ;
+                    },1500);
+ }
             dat[Inv] = Invite.uses;
-})
-})
-                          
+       
+       });
+    });
+});
 client.login(process.env.BOT_TOKEN);
